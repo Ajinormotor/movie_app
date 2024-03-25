@@ -1,95 +1,101 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+
+'use client'
+
+
+import { useState } from "react"
+import { FaPlaystation } from "react-icons/fa";
+
+
+
 
 export default function Home() {
-  return (
-    <main className={styles.main}>
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>src/app/page.js</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{" "}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
 
-      <div className={styles.center}>
-        <Image
-          className={styles.logo}
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
-        />
-      </div>
 
-      <div className={styles.grid}>
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Docs <span>-&gt;</span>
-          </h2>
-          <p>Find in-depth information about Next.js features and API.</p>
-        </a>
+  const [loading, setLoading]  = useState(false);
+const [email, setEmail]  = useState('')
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Learn <span>-&gt;</span>
-          </h2>
-          <p>Learn about Next.js in an interactive course with&nbsp;quizzes!</p>
-        </a>
+const handleSubmit=(e) =>{
+ e.preventDefault();
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p>Explore starter templates for Next.js.</p>
-        </a>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
-    </main>
-  );
+ setLoading(true);
+
+ try {
+setLoading(true)
+  const user_email = localStorage.setItem('email', email);
+  window.location.href='/Signup';
+
+ } catch (error) {
+  console.log("There is an error")
+ }
+}
+
+
+  return <>
+
+
+<header className="background">
+
+<div className="header__wrapper">
+
+
+
+
+<div className="header__heading">
+
+<div  className="logo">
+ <FaPlaystation  size={60} color="red"></FaPlaystation>
+    <h1>MovieApp</h1>
+  </div>
+
+  <div className="side_header">
+    <button className="header__btn">Login</button>
+  </div>
+
+
+
+</div>
+
+
+<div className="hero"  id="hero">
+
+<div className="hero__wrapper">
+
+<h1>
+Unlimited movies, TV shows, and more</h1>
+<p>Watch anywhere. Cancel anytime.</p>
+
+<p>Ready to watch? Enter your email 
+to create or restart your membership.</p>
+
+<div  className="hero__bottom" >
+  <form onSubmit={handleSubmit}>
+
+  <input type='email'
+  required
+     placeholder="example@gmail.com" 
+     loading={false}
+     value={email}  
+     onChange={(e)=>setEmail(e.target.value)}
+  ></input>
+
+ <button className="hero__btn"  type="submit"  value="submit">Get Started</button>
+   
+  </form>
+</div>
+
+
+
+</div>
+</div>
+
+
+</div>
+
+</header>
+
+
+
+
+  </>
 }
