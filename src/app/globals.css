@@ -24,7 +24,7 @@ body{
   background-size: cover;
   background-position: center;
   filter: brightness(56%);
- 
+   overflow:hidden;
 }
 
 .header__wrapper{
@@ -67,7 +67,7 @@ body{
   align-items: center;
   text-align: center;
   width: 100%;
-  margin-top: 17%;
+  margin-top: 18%;
 }
 
 .hero__wrapper{
